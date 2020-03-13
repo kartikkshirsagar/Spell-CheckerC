@@ -397,7 +397,7 @@ void insert_MRU(MRU*mruptr,char*word,Dictionary*dict_ptr)
 //display() is incomplete rn!!!
 void display(MRU*mruptr)
 {
-     printf("\nMRU!!!\n");
+    // printf("\nMRU!!!\n");
     printf("----------------------------------------------------------------------------------------------------------\n");
     wordNode*ptr=mruptr->top;
     while(ptr!=NULL)
@@ -473,7 +473,7 @@ void insert_mis(char* word,MIS_List*mlptr){
 
 void display_mis(MIS_List*mlptr)
 {
-     printf("\nMisspelled list!!!\n");
+     //printf("\nMisspelled list!!!\n");
     wordNode*ptr=mlptr->endptr->next;
     printf("-----------------------------------------------------------------------------\n");
     if(ptr!=NULL)
@@ -590,7 +590,7 @@ void bubbleSort(wordNode *start)
   
         while (ptr1->next != lptr) 
         { 
-            if (ptr1->freq > ptr1->next->freq) 
+            if (strcmp(ptr1->data,ptr1->next->data)>0) 
             {  
                 swapfandword(ptr1,ptr1->next);
         
@@ -615,10 +615,10 @@ void swapfandword(wordNode *a, wordNode *b)
     strcpy(b->data,tempw);
 } 
 
-void display_MRU_Sorted(MRU mru)
+void display_MRU_Sorted(MRU* mruptr)
 {
-    bubbleSort(mru.top);
-    display(&(mru));
+    bubbleSort(mruptr->top);
+    display(mruptr);
 }
 
 void display_mis_Sorted(MIS_List* mis)
@@ -706,8 +706,10 @@ int main(int argc,char* argv[])
    // TraverseDictionary(dict_ptr);
    
     display(mruptr);
-   
-    //display_mis(mlptr);
-    display_MRU_Sorted(*mruptr);
+    printf("\nMisspelled list!!!\n");
+    display_mis(mlptr);
+    printf("\nSorted MRU!!!\n");
+    display_MRU_Sorted(mruptr);
+    printf("\nSorted Misspelled list!!!\n");
     display_mis_Sorted(&MIS_data);
 }
