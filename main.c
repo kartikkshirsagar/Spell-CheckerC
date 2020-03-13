@@ -397,6 +397,7 @@ void insert_MRU(MRU*mruptr,char*word,Dictionary*dict_ptr)
 //display() is incomplete rn!!!
 void display(MRU*mruptr)
 {
+     printf("\nMRU!!!\n");
     printf("----------------------------------------------------------------------------------------------------------\n");
     wordNode*ptr=mruptr->top;
     while(ptr!=NULL)
@@ -472,8 +473,9 @@ void insert_mis(char* word,MIS_List*mlptr){
 
 void display_mis(MIS_List*mlptr)
 {
+     printf("\nMisspelled list!!!\n");
     wordNode*ptr=mlptr->endptr->next;
-    printf("--------------------------------------------------------------------------------------------------\n");
+    printf("-----------------------------------------------------------------------------\n");
     if(ptr!=NULL)
     {
         do{
@@ -484,7 +486,7 @@ void display_mis(MIS_List*mlptr)
         
         printf("\n");
     }
-    printf("---------------------------------------------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------------------------\n");
     
 }
 //Misspelled List done
@@ -702,10 +704,10 @@ int main(int argc,char* argv[])
     readResultFile(dict_ptr,mruptr,mlptr);
 
    // TraverseDictionary(dict_ptr);
-    printf("\nMRU!!!\n");
+   
     display(mruptr);
-    printf("\nMisspelled list!!!\n");
-    display_mis(mlptr);
+   
+    //display_mis(mlptr);
     display_MRU_Sorted(*mruptr);
     display_mis_Sorted(&MIS_data);
 }
